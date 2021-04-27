@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 
@@ -15,5 +16,16 @@ use App\Http\Controllers\RegisterController;
 */
 
 Route::name('api.')->group(function () {
+
     Route::post('/register', RegisterController::class)->name('register');
+
+    //auth routes
+    Route::name('auth.')->prefix('auth')->group(function () {
+        Route::post('/login', LoginController::class)->name('login');
+    });
+
+    //authenticated routes
+    Route::middleware('auth:sanctum')->group(function() {
+
+    });
 });
