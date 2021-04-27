@@ -3,7 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\PlanController as AdminPlanController;
-use App\Http\Controllers\Customer\PlanController as CustomerPlanController;
+use App\Http\Controllers\Public\PlanController as PublicPlanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,13 +24,18 @@ Route::name('api.')->group(function () {
         Route::post('/login', LoginController::class)->name('login');
     });
 
+    //public routes
+    Route::name('public.')->prefix('public')->group(function () {
+        Route::get('/plan', PublicPlanController::class)->name('plans');
+    });
+
     //admin routes
-    Route::name('api.admin.')->prefix('admin')->middleware(['auth:sanctum', 'admin'])->group(function () {
-        Route::apiResource('plans', AdminPlanController::class);
+    Route::name('admin.')->prefix('admin')->middleware(['auth:sanctum', 'admin'])->group(function () {
+        Route::apiResource('/plan', AdminPlanController::class);
     });
 
     //customer routes
-    Route::name('api.customer.')->prefix('customer')->middleware(['auth:sanctum', 'customer'])->group(function () {
-        Route::get('/plans', CustomerPlanController::class)->name('plans');
+    Route::name('customer.')->prefix('customer')->middleware(['auth:sanctum', 'customer'])->group(function () {
+        Route::apiResource('/subscribe', AdminPlanController::class);
     });
 });

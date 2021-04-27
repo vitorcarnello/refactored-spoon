@@ -3,13 +3,11 @@
 namespace Tests\Feature\Auth;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Response;
-use Tests\TestCase;
+use Tests\Feature\FeatureTest;
 
-class LoginTest extends TestCase
+class LoginTest extends FeatureTest
 {
-    use WithFaker;
     private User $user;
 
     protected function setUp(): void
@@ -33,7 +31,7 @@ class LoginTest extends TestCase
     public function test_should_not_login_with_an_invalid_email_and_password()
     {
         $this->postJson(route($this->urlName), [
-            'email'       => 'brisa33@example.net',
+            'email'       => $this->user->email,
             'password'    => "wrong_password",
             'device_name' => $this->faker->chrome
         ])

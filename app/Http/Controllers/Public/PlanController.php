@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Customer;
+namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PlanResource;
@@ -10,8 +10,6 @@ class PlanController extends Controller
 {
     public function __invoke()
     {
-        return PlanResource::collection(
-            Plan::get()
-        );
+        return PlanResource::collection(Plan::get());
     }
 }

@@ -3,14 +3,10 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Response;
-use Tests\TestCase;
 
-class RegisterTest extends TestCase
+class RegisterTest extends FeatureTest
 {
-    use WithFaker;
-
     private $urlName;
     private User $user;
     private $validPassword;
@@ -19,7 +15,7 @@ class RegisterTest extends TestCase
     {
         parent::setUp();
 
-        $this->urlName       = 'api.register';
+        $this->urlName       = 'api.auth.register';
         $this->user          = User::factory()->create();
         $this->validPassword = '123456Aa@';
     }

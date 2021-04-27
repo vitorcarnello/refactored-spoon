@@ -19,7 +19,8 @@ class PlanController extends Controller
     {
         $validated = request()->validate([
             'name'        => 'required|string',
-            'description' => 'nullable|string',
+            'description' => 'required|string',
+            'price'       => 'required|numeric|min:0',
         ]);
 
         return PlanResource::make(
@@ -31,7 +32,8 @@ class PlanController extends Controller
     {
         $validated = request()->validate([
             'name'        => 'required|string',
-            'description' => 'nullable|string',
+            'description' => 'required|string',
+            'price'       => 'required|numeric|min:0',
         ]);
 
         $plan->update($validated);
