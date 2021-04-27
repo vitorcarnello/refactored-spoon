@@ -14,8 +14,8 @@ class PlanFactory extends Factory
     public function definition()
     {
         return [
-            'name'        => $this->faker->realText,
-            'description' => $this->faker->realText,
+            'name'        => $this->faker->realText(),
+            'description' => $this->faker->realText(),
         ];
     }
 }

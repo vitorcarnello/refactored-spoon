@@ -65,11 +65,6 @@ class User extends Authenticatable
         $this->plan()->sync($plan);
     }
 
-    public function isAdmin()
-    {
-        return $this->hasRole(Role::ADMIN);
-    }
-
     public function hasRole($role)
     {
         if (is_string($role)) {

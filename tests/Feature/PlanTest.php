@@ -26,10 +26,10 @@ class PlanTest extends TestCase
 
     public function test_should_allow_only_authenticated_users_to_manage_plan()
     {
-        $this->getJson(route('api.plans.index'))->assertUnauthorized();
-        $this->postJson(route('api.plans.store'))->assertUnauthorized();
-        $this->putJson(route('api.plans.update', ['plan' => 98237993]))->assertUnauthorized();
-        $this->deleteJson(route('api.plans.destroy', ['plan' => 98237993]))->assertUnauthorized();
+        $this->getJson(route('api.admin.plan.index'))->assertUnauthorized();
+        $this->postJson(route('api.admin.plan.store'))->assertUnauthorized();
+        $this->putJson(route('api.admin.plan.update', ['plan' => 98237993]))->assertUnauthorized();
+        $this->deleteJson(route('api.admin.plan.destroy', ['plan' => 98237993]))->assertUnauthorized();
     }
 
     // public function test_should_validate_required_fields()
@@ -38,14 +38,14 @@ class PlanTest extends TestCase
 
     //     $plan = Plan::factory()->create();
 
-    //     $this->postJson(route('api.plan.store', []))
+    //     $this->postJson(route('api.amin.plan.store', []))
     //         ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
     //         ->assertJsonValidationErrors([
     //             'name'        => __('validation.required', ['attribute' => 'name']),
     //             'description' => __('validation.required', ['attribute' => 'description']),
     //         ]);
 
-    //     $this->putJson(route('api.plan.update', $plan), [])
+    //     $this->putJson(route('api.amin.plan.update', $plan), [])
     //         ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
     //         ->assertJsonValidationErrors([
     //             'name'        => __('validation.required', ['attribute' => 'name']),
