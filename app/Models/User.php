@@ -40,4 +40,46 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function plan()
+    {
+        return $this->belongsToMany(Plan::class);
+    }
+    
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class)->withTimestamps();
+    }
+
+    public function assignRole($role)
+    {
+        if (is_string($role)) {
+            $role = Role::whereName($role)->firstOrFail();
+        }
+
+        $this->roles()->sync($role, true);
+    }
+
+    public function assignPlan(Int $plan)
+    {
+        $this->plan()->sync($plan);
+    }
+
+    public function isAdmin()
+    {
+        return $this->hasRole(Role::ADMIN);
+    }
+
+    public function hasRole($role)
+    {
+        if (is_string($role)) {
+            $role = Role::whereName($role)->firstOrFail();
+        }
+
+        if ($this->roles()->where('name', $role->name)->exists()) {
+            return true;
+        }
+
+        return false;
+    }
 }

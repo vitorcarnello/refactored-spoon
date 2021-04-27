@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\PlanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 
@@ -24,8 +25,8 @@ Route::name('api.')->group(function () {
         Route::post('/login', LoginController::class)->name('login');
     });
 
-    //authenticated routes
-    Route::middleware('auth:sanctum')->group(function() {
-
+    //admin routes
+    Route::name('api.admin.')->prefix('admin')->middleware(['auth:sanctum', 'admin'])->group(function () {
+        Route::apiResource('plans', PlanController::class);
     });
 });
