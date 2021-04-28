@@ -1,9 +1,10 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Auth;
 
 use App\Models\User;
 use Illuminate\Http\Response;
+use Tests\Feature\FeatureTest;
 
 class RegisterTest extends FeatureTest
 {

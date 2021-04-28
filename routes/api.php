@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\PlanController as AdminPlanController;
 use App\Http\Controllers\Public\PlanController as PublicPlanController;
+use App\Http\Controllers\Customer\PlanController as CustomerPlanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,7 +36,8 @@ Route::name('api.')->group(function () {
     });
 
     //customer routes
-    Route::name('customer.')->prefix('customer')->middleware(['auth:sanctum', 'customer'])->group(function () {
-        Route::apiResource('/subscribe', AdminPlanController::class);
+    Route::name('customer.')->prefix('customer')->middleware(['auth:sanctum'])->group(function () {
+        Route::post('/plan/subscribe', [CustomerPlanController::class, 'subscribe'])->name('plan.subscribe');
+        Route::get('/plan', [CustomerPlanController::class, 'index'])->name('plan.index');
     });
 });

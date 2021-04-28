@@ -10,9 +10,7 @@ class PlanController extends Controller
 {
     public function index()
     {
-        return PlanResource::collection(
-            Plan::get()
-        );
+        return PlanResource::collection(Plan::get());
     }
 
     public function store()

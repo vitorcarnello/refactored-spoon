@@ -1,12 +1,13 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Admin;
 
 use App\Models\Plan;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Response;
 use Laravel\Sanctum\Sanctum;
+use Tests\Feature\FeatureTest;
 
 class PlanTest extends FeatureTest
 {
