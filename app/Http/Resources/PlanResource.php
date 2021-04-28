@@ -2,14 +2,14 @@
 
 namespace App\Http\Resources;
 
-use App\Models\User;
+use App\Models\Plan;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PlanResource extends JsonResource
 {
     public function toArray($request)
     {
-        /** @var User $this */
+        /** @var Plan $this */
         return [
             'id'          => $this->id,
             'name'        => $this->name,

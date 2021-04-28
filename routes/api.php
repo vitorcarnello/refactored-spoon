@@ -36,7 +36,7 @@ Route::name('api.')->group(function () {
     });
 
     //customer routes
-    Route::name('customer.')->prefix('customer')->middleware(['auth:sanctum'])->group(function () {
+    Route::name('customer.')->prefix('customer')->middleware(['auth:sanctum', 'customer'])->group(function () {
         Route::post('/plan/subscribe', [CustomerPlanController::class, 'subscribe'])->name('plan.subscribe');
         Route::get('/plan', [CustomerPlanController::class, 'index'])->name('plan.index');
     });
