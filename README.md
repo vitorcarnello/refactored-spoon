@@ -59,7 +59,7 @@ Adminer UI:
 
 **Server:** mysql   
 **Username:** root  
-**Password:** root 
+**Password:** root  
 **Database:** app  
 
 ## Code Quality
