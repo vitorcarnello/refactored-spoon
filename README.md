@@ -55,7 +55,7 @@ sail artisan migrate --seed
 [http://localhost](http://localhost)  
 [http://localhost:5431](http://localhost:5431)  
  
-Adminer UI:
+Adminer UI credentials:
 
 **Server:** mysql   
 **Username:** root  
