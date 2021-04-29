@@ -50,21 +50,17 @@ sail artisan key:generate
 sail artisan migrate --seed
 ```
 
-**7** Access localhost and everything should be working:
+**7** Get access to localhost and AdminerUI:
 
-```bash
-http://localhost
-```
-
-**Adminer UI**  
+[http://localhost](http://localhost)  
 [http://localhost:5431](http://localhost:5431)  
  
-with the following credentials:
+Adminer UI:
 
-**Hostname:** mysql   
-**Database:** app  
+**Server:** mysql   
 **Username:** root  
 **Password:** root 
+**Database:** app  
 
 ## Code Quality
 
