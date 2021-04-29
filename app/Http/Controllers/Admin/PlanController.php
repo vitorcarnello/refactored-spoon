@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\PlanRequest;
 use App\Http\Resources\PlanResource;
 use App\Models\Plan;
 
@@ -13,27 +14,17 @@ class PlanController extends Controller
         return PlanResource::collection(Plan::get());
     }
 
-    public function store()
+    public function store(PlanRequest $request)
     {
-        $validated = request()->validate([
-            'name'        => 'required|string',
-            'description' => 'required|string',
-            'price'       => 'required|numeric|min:0',
-        ]);
+        $validated = $request->validated();
 
-        return PlanResource::make(
-            Plan::query()->create($validated)
-        );
+        return PlanResource::make(Plan::query()->create($validated));
     }
 
-    public function update(Plan $plan)
+    public function update(PlanRequest $request, Plan $plan)
     {
-        $validated = request()->validate([
-            'name'        => 'required|string',
-            'description' => 'required|string',
-            'price'       => 'required|numeric|min:0',
-        ]);
-
+        $validated = $request->validated();
+        
         $plan->update($validated);
 
         return PlanResource::make($plan);
